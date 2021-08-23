@@ -1,4 +1,16 @@
 
-C++/.DS_Store
-.DS_Store
-*.plist
+# C++/.DS_Store
+# .DS_Store
+# *.plist
+# */Contents
+# *.dSYM
+# *.exe
+# Ignore Everything
+*
+
+# But not .cpp
+!*.cpp
+# Or directories
+!*/
+!.gitignore
+!README.md
