@@ -1,0 +1,7 @@
+#include <stdio.h>
+
+int main() {
+  typedef int Pair[2];
+  Pair point = { 3, 4 };  // int point[2] = {3, 4};
+  printf("(%d, %d)", point[0], point[1]);
+}
