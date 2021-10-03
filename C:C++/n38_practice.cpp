@@ -21,9 +21,10 @@ public:
 	// 복사 생성자 구현
 	Polygon(const Polygon &rhs) {
 		nPoints = rhs.nPoints;
-		points = new Point[rhs.nPoints];
-		for (int i = 0; i < nPoints; i++)
+		points = new Point[nPoints];
+		for (int i = 0; i < nPoints; i++) {
 			this->points[i] = rhs.points[i];
+		}
 		cout << "deep copy" << endl;
 	}
 
@@ -32,6 +33,7 @@ public:
 		nPoints = rhs.nPoints;
 		points = rhs.points;
 		rhs.points = NULL;
+		cout << "shallow copy" << endl;
 	}
 
 	~Polygon() {
@@ -43,19 +45,23 @@ public:
 		if (this != &rhs) {
 			delete[] points;
 			nPoints = rhs.nPoints;
-			points = new Point[rhs.nPoints];
-			for (int i = 0; i < nPoints; i++)
+			points = new Point[nPoints];
+			for (int i = 0; i < nPoints; i++) {
 				this->points[i] = rhs.points[i];
+			}
 		}
 		cout << "deep copy" << "endl";
 		return *this;
 	}
 
 	// 이동 대입 연산자 구현
-	Polygon &operator=(Polygon &rhs) {
-		nPoints = rhs.nPoints;
-		points = rhs.points;
-		rhs.points = NULL;
+	Polygon &operator=(Polygon &&rhs) {
+		if (this != &rhs) {
+			nPoints = rhs.nPoints;
+			points = rhs.points;
+			rhs.points = NULL;
+		}
+		cout << "shallow copy" << endl;
 		return *this;
 	}
 
