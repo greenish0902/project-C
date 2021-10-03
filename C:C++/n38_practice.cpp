@@ -50,7 +50,7 @@ public:
 				this->points[i] = rhs.points[i];
 			}
 		}
-		cout << "deep copy" << "endl";
+		cout << "deep copy" << endl;
 		return *this;
 	}
 
@@ -58,6 +58,7 @@ public:
 	Polygon &operator=(Polygon &&rhs) {
 		if (this != &rhs) {
 			nPoints = rhs.nPoints;
+			delete[] points;
 			points = rhs.points;
 			rhs.points = NULL;
 		}
